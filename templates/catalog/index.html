@@ -1,0 +1,54 @@
+{% extends 'catalog/base.html' %}
+
+<!-- Title -->
+{% block title %}
+wfw
+{% endblock title %}
+<!-- End of title -->
+
+<!-- Body -->
+{% block body_block %}
+
+    <!-- Banner -->
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4 text-break text-center">
+                A Website for <span class="display-3">Websites.</span>
+            </h1>
+        </div>
+    </div>
+    <!-- End of banner -->
+
+    <!-- Search bar -->
+    <div class="container mt-2 mb-4">
+        <form class="form-inline">
+            <input class="form-control mr-sm-2 ml-auto" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+    <!-- End of search bar -->
+
+    <!-- Card column -->
+    <div class="container">
+        <div class="card-columns">
+            <!-- Card -->
+            <div class="card">
+                <div class="card-header">
+                    Tag
+                </div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Placeholder text</li>
+                        <li class="list-group-item">Placeholder text</li>
+                        <li class="list-group-item">Placeholder text</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- End of card -->
+        </div>
+    </div>
+    <!-- End of card column -->
+
+ 
+{% endblock body_block %}
+<!-- End of body -->
