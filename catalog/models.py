@@ -32,7 +32,7 @@ class Website(models.Model) :
     name = models.CharField(max_length = 128)
     url = models.URLField()
     description = models.CharField(max_length=256, blank=True, default='')
-    tag = models.ForeignKey(Tag, on_delete = models.CASCADE)
+    tag = models.ForeignKey(Tag, on_delete = models.CASCADE, related_name = 'tags')
     user = models.ForeignKey(User, on_delete = models.SET_DEFAULT, default = default_user)
     date_added = models.DateTimeField(default = timezone.now)
     

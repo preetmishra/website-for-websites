@@ -1,9 +1,8 @@
 {% extends 'catalog/base.html' %}
+{% load catalog_extras %}
 
 <!-- Title -->
-{% block title %}
-wfw | A website for websites
-{% endblock title %}
+{% block title %} wfw | A website for websites {% endblock title %}
 <!-- End of title -->
 
 <!-- Body -->
@@ -31,26 +30,42 @@ wfw | A website for websites
         </form>
     </div>
 
-    <!-- Card column -->
+    <!-- Cards -->
     <div class="container">
-        <div class="card-columns">
+        <div class="row">
+
+            <!-- Groups websites by tag -->
+            {% regroup websites|dictsort:"tag.tag" by tag as tag_list %}
+            
             <!-- Card -->
-            <div class="card">
-                <div class="card-header">
-                    Tag
-                </div>
-                <div class="card-body">
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Placeholder text</li>
-                        <li class="list-group-item">Placeholder text</li>
-                        <li class="list-group-item">Placeholder text</li>
-                    </ul>
+            {% for tag in tag_list %}
+            <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6">
+                <div class="card my-2">
+                    <!-- Card header -->
+                    <div class="card-header">
+                        <!-- prettyprinttags is a custom filter(check catalog_extras.py under templatetags/) -->
+                        {{ tag.grouper|prettyprinttags }}
+                    </div>
+                    <!-- End of card header -->
+                    <!-- Card body -->
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            {% for item in tag.list|dictsort:"name" %}
+                            <li class="list-group-item"> 
+                                <a href="{{ item.url }}"> {{ item.name }} </a>
+                                <span class="text-muted"> ({{ item.user }}) </span>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <!-- End of card body -->
                 </div>
             </div>
+            {% endfor %}
             <!-- End of card -->
         </div>
     </div>
-    <!-- End of card column -->
+    <!-- End of cards -->
 
  
 {% endblock body_block %}
