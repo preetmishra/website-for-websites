@@ -39,7 +39,8 @@ class Website(models.Model) :
     tag = models.ForeignKey(Tag, on_delete = models.CASCADE, related_name = 'tags')
     user = models.ForeignKey(User, on_delete = models.SET_DEFAULT, default = default_user)
     date_added = models.DateTimeField(default = timezone.now)
-    
+    approved = models.BooleanField(default = 'False')
+
     def __str__(self) :
         return self.name
 

@@ -4,8 +4,10 @@ from catalog import models
 
 @admin.register(models.Website)
 class WebsiteAdmin(admin.ModelAdmin) :
-    list_filter = ('tag', 'user')
+    list_filter = ['approved', 'tag', 'user']
     list_display = [field.name for field in models.Website._meta.fields]
+    list_display.remove('id')
+    list_editable = ['approved']
 
 # Register your models here.
 
