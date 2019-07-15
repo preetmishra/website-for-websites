@@ -21,8 +21,12 @@ class Profile(models.Model) :
 class Tag(models.Model) :
     tag = models.CharField(max_length = 30)
     
+    class Meta:
+        ordering = ('tag',)
+
     def __str__(self) :
         return self.tag
+
 
 class Website(models.Model) :
 

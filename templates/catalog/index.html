@@ -1,5 +1,5 @@
 {% extends 'catalog/base.html' %}
-{% load catalog_extras %}
+{% load crispy_forms_tags %}
 
 <!-- Title -->
 {% block title %} wfw | A website for websites {% endblock title %}
@@ -18,33 +18,45 @@
     </div>
     <!-- End of banner -->
     
+    
     <div class="container mt-2 mb-4">
-        <form class="form-inline">
+        <div class="row">
             <!-- Add button -->
-            <button type="button" class="btn btn-outline-primary my-2 my-sm-0">Add</button>
+            <div class="col-lg-6">
+                <button type="button" class="btn btn-outline-primary my-3 my-lg-0">Add</button>
+            </div>
             <!-- End of add button -->
-            <!-- Search bar -->
-            <input class="form-control mr-sm-2 ml-auto" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
-            <!-- End of search bar -->
-        </form>
+            <!-- Select -->
+            <div class="col-lg-6">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-xl-10 col-lg-9">
+                            {{ tag_form|crispy }}
+                        </div>
+                        <div class="col-xl-2 col-lg-3">
+                            <input class="btn btn-outline-primary ml-lg-4 ml-xl-0" type="submit" value="Filter">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- End of select -->
+        </div>
     </div>
+    
+    <!-- Groups websites by tag -->
+    {% regroup websites|dictsort:"tag.tag" by tag as tag_list %}
 
     <!-- Cards -->
     <div class="container">
         <div class="row">
-
-            <!-- Groups websites by tag -->
-            {% regroup websites|dictsort:"tag.tag" by tag as tag_list %}
-            
             <!-- Card -->
             {% for tag in tag_list %}
             <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6">
                 <div class="card my-2">
                     <!-- Card header -->
                     <div class="card-header">
-                        <!-- prettyprinttags is a custom filter(check catalog_extras.py under templatetags/) -->
-                        {{ tag.grouper|prettyprinttags }}
+                        {{ tag.grouper }}
                     </div>
                     <!-- End of card header -->
                     <!-- Card body -->
