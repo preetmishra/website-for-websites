@@ -5,7 +5,7 @@ from django.views.generic import (View, TemplateView, ListView,
 from catalog import models 
 from catalog import forms
 
-class index(TemplateView) :
+class Index(TemplateView) :
     template_name = 'catalog/index.html'
 
     def get(self, request, *args, **kwargs) :
