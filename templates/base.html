@@ -11,7 +11,9 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="{% static 'favicon/favicon.ico' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
     <title>
         {% block title %} {% endblock title %}
     </title>
@@ -20,7 +22,7 @@
 <body>
 
     <!-- Navigation bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+    <nav class="navbar navbar-expand-md navbar-dark bg-primary sticky-top">
         <a class="navbar-brand" href="{% url 'catalog:index' %}">wfw | A website for websites</a>
         <!-- For navbar collapse -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
@@ -41,7 +43,7 @@
                         <a class="nav-link" href="{% url 'users:login' %}">Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Register</a>
+                        <a class="nav-link" href="{% url 'users:register' %}">Register</a>
                     </li>
                 {% endif %}
             </ul>

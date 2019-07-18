@@ -8,15 +8,23 @@
 <!-- Body -->
 {% block body_block %}
 
-<div class="container">
+<div class="container my-4">
     <div class="row">
-        <div class="col-md-6 my-5">
+        <div class="col-md-6">
             <div class="">
                 <p class="display-4">Log In</p>
+                {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    {{ message }}
+                </div>
+                {% endfor %}
+                {% endif %}
                 <form method="post">
                     {% csrf_token %}
                     {{ form|crispy }}
                     <input type="submit" class="btn btn-primary" value="Login">
+                    <p class="text-muted my-3">New user? <a href="{% url 'users:register' %}">Register</a></p>
                 </form>
             </div>
         </div>
