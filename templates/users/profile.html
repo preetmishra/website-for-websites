@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+<!-- Title -->
+{% block title %} Profile | wfw {% endblock title %}
+<!-- End of title -->
+
+<!-- Body -->
+{% block body_block %}
+
+<div class="container my-4">
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="card-body">
+                    <img class="rounded-circle" style="width:85px; height:85px;"
+                        src="{{ user.profile.profile_picture.url }}" alt="avatar">
+                    <div class="float-right">
+                        <p> {{ user.username }} </p>
+                        <p class="text-muted"> {{ user.email }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock body_block%}
+<!-- End of body -->

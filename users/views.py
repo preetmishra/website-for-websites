@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages 
 from users import forms
+from django.views.generic import TemplateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
 
@@ -45,3 +47,6 @@ def register(request) :
 
     return render(request, 'users/register.html', {'user_form' : user_form, 
                                                     'user_profile_form' : user_profile_form })
+
+class ProfileView(LoginRequiredMixin, TemplateView) :
+    template_name = 'users/profile.html'

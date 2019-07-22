@@ -1,6 +1,7 @@
 from django.contrib import admin
 from catalog import models
 
+# Register your models here.
 
 @admin.register(models.Website)
 class WebsiteAdmin(admin.ModelAdmin) :
@@ -9,8 +10,5 @@ class WebsiteAdmin(admin.ModelAdmin) :
     list_display.remove('id')
     list_editable = ['approved']
 
-# Register your models here.
-
 admin.site.register(models.Profile)
 admin.site.register(models.Tag)
-admin.site.register(models.UserAndWebsite)
