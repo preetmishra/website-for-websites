@@ -11,14 +11,30 @@
 <div class="container my-4">
     <div class="row">
         <div class="col-lg-4">
-            <div class="card">
+            <div class="card mb-2">
                 <div class="card-body">
                     <img class="rounded-circle" style="width:85px; height:85px;"
                         src="{{ user.profile.profile_picture.url }}" alt="avatar">
                     <div class="float-right">
                         <p> {{ user.username }} </p>
-                        <p class="text-muted"> {{ user.email }}</p>
+                        <p class="text-muted"> {{ user.email }} </p>
                     </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-8">
+            <div class="card">
+                <div class="card-header">
+                    Favourites
+                </div>
+                <div class="card-body">
+                    {% if favourites %}
+                        {% for favourite in favourites %}
+                        <p> <a href="{{ favourite.url }}"> {{ favourite }} </a></p>
+                        {% endfor %}
+                    {% else %}
+                        <p> No favourites found. Please add some. </p>
+                    {% endif %}
                 </div>
             </div>
         </div>

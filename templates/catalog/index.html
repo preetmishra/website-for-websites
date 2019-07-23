@@ -68,6 +68,17 @@
                             <li class="list-group-item"> 
                                 <a href="{{ item.url }}"> {{ item.name }} </a>
                                 <span class="text-muted"> ({{ item.user }}) </span>
+                                {% if user.is_authenticated %}
+                                    {% if not item in favourites %}
+                                    <a href="{% url 'users:tweakfavourites' operation='add' pk=item.id %}">
+                                        +
+                                    </a> 
+                                    {% else %}
+                                    <a href="{% url 'users:tweakfavourites' operation='remove' pk=item.id %}">
+                                        -
+                                    </a>
+                                    {% endif %} 
+                                {% endif %}
                             </li>
                             {% endfor %}
                         </ul>

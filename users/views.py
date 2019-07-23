@@ -3,6 +3,8 @@ from django.contrib import messages
 from users import forms
 from django.views.generic import TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
+from catalog import models
 
 # Create your views here.
 
@@ -50,3 +52,13 @@ def register(request) :
 
 class ProfileView(LoginRequiredMixin, TemplateView) :
     template_name = 'users/profile.html'
+
+    def get(self, request, *args, **kwargs) :
+        user_id = request.user.id
+        favourites = models.Profile.objects.get(user_id = user_id).favourites.all()
+        return render(request, self.template_name, {'favourites' : favourites })
+
+@login_required
+def tweakfavourites(request, operation, pk) :
+    models.Profile.add_or_remove_favourites(user_id = request.user.id, website_id = pk, operation = operation)
+    return redirect('catalog:index')

@@ -19,12 +19,10 @@ class Website(models.Model):
         return User.objects.get(username='Anon').pk
 
     name = models.CharField(max_length=128, verbose_name='title', unique=True)
-    url = models.URLField(
-        help_text='Do not forget to add http:// or https://.')
+    url = models.URLField(help_text='Do not forget to add http:// or https://.')
     description = models.CharField(max_length=256, blank=True, default='')
     tag = models.ForeignKey(Tag, on_delete=models.CASCADE, related_name='tags')
-    user = models.ForeignKey(
-        User, on_delete=models.SET_DEFAULT, default=default_user)
+    user = models.ForeignKey(User, on_delete=models.SET_DEFAULT, default=default_user)
     date_added = models.DateTimeField(default=timezone.now)
     approved = models.BooleanField(default='False')
 
@@ -42,6 +40,14 @@ class Profile(models.Model) :
     gender = models.CharField(max_length = 2, choices = GENDER)
     profile_picture = models.ImageField(upload_to = 'profile_pictures', default = 'default.png')
     favourites = models.ManyToManyField(Website, related_name = 'favourited_by')
+
+    @classmethod
+    def add_or_remove_favourites(cls, user_id, website_id, operation) :
+        profile = Profile.objects.get(user = user_id)
+        if operation == 'add' :
+            profile.favourites.add(website_id)
+        elif operation == 'remove' :
+            profile.favourites.remove(website_id)
 
     def __str__(self) :
         return self.user.username

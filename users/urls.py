@@ -11,6 +11,7 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('register/', user_views.register , name='register'),
     path('profile/', user_views.ProfileView.as_view() , name='profile'),
+    path('favourites/<str:operation>/<int:pk>', user_views.tweakfavourites, name='tweakfavourites')
 ] 
 
 if settings.DEBUG :

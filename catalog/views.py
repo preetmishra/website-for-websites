@@ -14,7 +14,15 @@ class Index(TemplateView) :
     def get(self, request, *args, **kwargs) :
         websites = models.Website.objects.filter(approved = 'True')
         tag_form = forms.FilterByTagForm()
-        return render(request, self.template_name, {'tag_form' : tag_form, 'websites' : websites})
+        if request.user.id :
+            user_id = request.user.id
+            favourites = models.Profile.objects.get(user_id = user_id).favourites.all()
+            return render(request, self.template_name, {'tag_form': tag_form, 
+                                                        'websites': websites, 
+                                                        'favourites': favourites})
+        else :
+            return render(request, self.template_name, {'tag_form': tag_form,
+                                                        'websites': websites})
 
     def post(self, request, *args, **kwargs) :
         tag_form = forms.FilterByTagForm(request.POST)
