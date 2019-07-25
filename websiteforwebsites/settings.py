@@ -146,7 +146,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # The URL or named URL pattern where requests are redirected after login when the LoginView doesn’t get a next GET parameter.
 
-LOGIN_REDIRECT_URL = 'catalog:index'
+LOGIN_REDIRECT_URL = 'users:profile'
 
 # The URL or named URL pattern where requests are redirected for login when using the login_required() decorator, LoginRequiredMixin, or AccessMixin.
 

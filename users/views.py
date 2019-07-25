@@ -1,16 +1,16 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages 
-from users import forms
 from django.views.generic import TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
+from users import forms
 from catalog import models
 
 # Create your views here.
 
 def register(request) :
 
-    if request.user.is_authenticated:
+    if request.user.is_authenticated : 
         return redirect('catalog:index')
 
     if request.method == 'POST' :
@@ -34,8 +34,6 @@ def register(request) :
             
             if 'profile_picture' in request.FILES :
                 profile.profile_picture = request.FILES['profile_picture']
-            else :
-                print('Not found!')
 
             profile.save()
 
@@ -59,6 +57,27 @@ class ProfileView(LoginRequiredMixin, TemplateView) :
         return render(request, self.template_name, {'favourites' : favourites })
 
 @login_required
-def tweakfavourites(request, operation, pk) :
+def tweak_favourites(request, operation, pk) :
     models.Profile.add_or_remove_favourites(user_id = request.user.id, website_id = pk, operation = operation)
     return redirect('catalog:index')
+
+
+@login_required
+def update_profile_view(request) :
+    
+    if request.method == 'POST' :
+        user_update_form = forms.UserUpdateForm(request.POST, instance = request.user)
+        user_profile_update_form = forms.UserProfileUpdateForm(request.POST,
+                                                                request.FILES,
+                                                                instance = request.user.profile)
+        if user_update_form.is_valid and user_profile_update_form.is_valid :
+            user_update_form.save()
+            user_profile_update_form.save()
+            messages.success(request, f'Your profile has been updated successfully!')
+            return redirect('users:profile')
+    else :
+        user_update_form = forms.UserUpdateForm(instance = request.user)
+        user_profile_update_form = forms.UserProfileUpdateForm(instance = request.user.profile)
+
+    return render(request, 'users/update_profile.html', {'user_update_form' : user_update_form,
+                                                'user_profile_update_form' : user_profile_update_form})

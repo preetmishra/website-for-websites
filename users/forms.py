@@ -34,3 +34,20 @@ class UserProfileForm(forms.ModelForm) :
     class Meta :
         model =  models.Profile
         fields = ['gender', 'profile_picture']
+
+class UserUpdateForm(forms.ModelForm) :
+    class Meta :
+        model = User
+        fields = ['first_name', 'last_name', 'username', 'email']
+
+        def clean(self):
+            cleaned_data = super(UserForm, self).clean()
+            email = self.cleaned_data.get('email')
+            username = self.cleaned_data.get('username')
+            if email and User.objects.filter(email=email).exclude(username=username).exists():
+                raise forms.ValidationError(u'Email addresses must be unique.')
+
+class UserProfileUpdateForm(forms.ModelForm):
+    class Meta :
+        model = models.Profile
+        fields = ['gender', 'profile_picture']

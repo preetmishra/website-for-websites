@@ -9,6 +9,13 @@
 {% block body_block %}
 
 <div class="container my-4">
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}">
+        {{ message }}
+    </div>
+    {% endfor %}
+    {% endif %}
     <div class="row">
         <div class="col-lg-4">
             <div class="card mb-2">
@@ -20,6 +27,14 @@
                         <p class="text-muted"> {{ user.email }} </p>
                     </div>
                 </div>
+            </div>
+            <div class="my-3">
+                <a href="{% url 'users:updateprofile' %}">
+                    <button class="btn btn-primary">Update Profile</button>
+                </a>
+                <a href="{% url 'password_reset' %}">
+                    <button class="btn btn-secondary">Reset Password</button>
+                </a>
             </div>
         </div>
         <div class="col-lg-8">
