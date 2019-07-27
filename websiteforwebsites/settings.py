@@ -22,7 +22,7 @@ MEDIA_DIR = os.path.join(BASE_DIR, 'media')
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = '*nyp$)m9rvj6xh=d$c=!o4yv5s&_e67cp3z+tyo#eo2khrc@wx'
-SECRET_KEY= os.environ.get('WFW_SECRET_KEY')
+SECRET_KEY = os.environ.get('WFW_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -162,4 +162,4 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'teamatwfw@gmail.com'
-EMAIL_HOST_PASSWORD = 'TobeInserted'
+EMAIL_HOST_PASSWORD = os.environ.get('WFW_EMAIL_PASSWORD')
