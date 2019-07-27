@@ -50,8 +50,8 @@ class Profile(models.Model) :
         elif operation == 'remove' :
             profile.favourites.remove(website_id)
 
-    def save(self) :
-        super().save()
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
 
         img = Image.open(self.profile_picture.path)
 
