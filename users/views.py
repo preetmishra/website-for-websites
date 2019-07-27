@@ -53,12 +53,12 @@ class ProfileView(LoginRequiredMixin, TemplateView) :
 
     def get(self, request, *args, **kwargs) :
         user_id = request.user.id
-        favourites = models.Profile.objects.get(user_id = user_id).favourites.all()
+        favourites = models.UserProfile.objects.get(user_id = user_id).favourites.all()
         return render(request, self.template_name, {'favourites' : favourites })
 
 @login_required
 def tweak_favourites(request, operation, pk) :
-    models.Profile.add_or_remove_favourites(user_id = request.user.id, website_id = pk, operation = operation)
+    models.UserProfile.add_or_remove_favourites(user_id = request.user.id, website_id = pk, operation = operation)
     website = models.Website.objects.get(id = pk)
     if operation == 'add' :
         messages.info(request, f'Successfully added {website} to your favourites.')
