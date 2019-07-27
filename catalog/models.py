@@ -17,7 +17,8 @@ class Tag(models.Model):
 class Website(models.Model):
 
     def default_user():
-        return User.objects.get(username='Anon').pk
+        # return User.objects.get(username='Anon').pk
+        return 1
 
     name = models.CharField(max_length=128, verbose_name='title', unique=True)
     url = models.URLField(help_text='Do not forget to add http:// or https://.')
