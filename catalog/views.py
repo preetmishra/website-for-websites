@@ -5,6 +5,7 @@ from django.views.generic import (
 )
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
+from django.contrib.messages.views import SuccessMessageMixin
 from catalog import models 
 from catalog import forms
 
@@ -35,12 +36,19 @@ class Index(TemplateView) :
                 websites = models.Website.objects.filter(approved = 'True').filter(tag_id = tag_id)
                 return render(request, self.template_name, {'tag_form': tag_form, 'websites': websites})
 
-class WebsiteCreateView(LoginRequiredMixin, CreateView) :
+
+class WebsiteCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     model = models.Website
     fields = ['name', 'url', 'tag']
 
     success_url = reverse_lazy('catalog:index')
-
+    success_message = "Thank you for contributing! We have recieved your request. We will add your suggested website as soon as we are done with its verification."
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super(WebsiteCreateView, self).form_valid(form)
+
+class AboutView(TemplateView) :
+    template_name = 'catalog/about.html'
+
+class HowItWorksView(TemplateView) :
+    template_name = 'catalog/howitworks.html'

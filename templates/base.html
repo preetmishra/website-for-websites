@@ -8,6 +8,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/5fd144ee2f.js"></script>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -21,31 +23,42 @@
 
 <body>
 
+    <!-- Top block -->
+    {% block top_block %} {% endblock top_block %}
+    <!-- End of top block -->
+
     <!-- Navigation bar -->
-    <nav class="navbar navbar-expand-md navbar-dark bg-primary sticky-top">
-        <a class="navbar-brand" href="{% url 'catalog:index' %}">wfw | A website for websites</a>
+    <nav class="navbar navbar-expand-md sticky-top">
+        <a class="navbar-brand navbarlink" href="{% url 'catalog:index' %}">wfw | A website for websites</a>
         <!-- For navbar collapse -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
-            <span class="navbar-toggler-icon"></span>
+            <span><i class="fas fa-bars" id="navbartoggle"></i></span>
         </button>
         <!-- Things to be collapsed -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto mr-0">
                 {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link active" href="{% url 'users:profile' %}">{{ user.username }}</a>
+                        <a class="nav-link active navbarlink" href="{% url 'users:profile' %}" style="text-transform: none; color:#1369D5;">{{ user.username }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'users:logout' %}">Logout</a>
+                        <a class="nav-link navbarlink" href="{% url 'users:logout' %}">Logout</a>
                     </li>
                 {% else %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'users:login' %}">Login</a>
+                        <a class="nav-link navbarlink" href="{% url 'users:login' %}">Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'users:register' %}">Register</a>
+                        <a class="nav-link navbarlink" href="{% url 'users:register' %}">Register</a>
                     </li>
                 {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link navbarlink" href="{% url 'catalog:about' %}">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link navbarlink" href="{% url 'catalog:howitworks' %}">How it
+                            works?</a>
+                    </li>
             </ul>
         </div>
         <!-- End of things to be collapsed -->

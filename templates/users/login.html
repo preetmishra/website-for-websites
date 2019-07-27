@@ -10,9 +10,11 @@
 
 <div class="container my-4">
     <div class="row">
-        <div class="col-md-6">
-            <div class="">
-                <p class="display-4">Log In</p>
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-8">
+            <div class="my-5 py-md-3 py-sm-0">
+                <p class="display-4">log in</p>
                 {% if messages %}
                 {% for message in messages %}
                 <div class="alert alert-{{ message.tags }}">
@@ -24,15 +26,13 @@
                     {% csrf_token %}
                     {{ form|crispy }}
                     <input type="submit" class="btn btn-primary" value="Login">
-                    <small>
-                        <a href="{% url 'password_reset' %}">Forgot password?</a>
+                    <small class="ml-2 mr-auto" >
+                        <a href="{% url 'password_reset' %} ">Forgot password?</a>
                     </small>
-                    <p class="text-muted my-3">New user? <a href="{% url 'users:register' %}">Register</a></p>
                 </form>
             </div>
         </div>
-        <div class="col-md-6">
-
+        <div class="col-md-2">
         </div>
     </div>
 </div>

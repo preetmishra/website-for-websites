@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+<!-- Title -->
+{% block title %} About | wfw {% endblock title %}
+<!-- End of title -->
+
+<!-- Body -->
+{% block body_block %}
+
+<div class="container my-4">
+    <div class="row py-3">
+        <div class="col-md-4 mb-3">
+            <div class="card">
+                <div class="card-body text-center" style="font-family: 'Open Sans', sans-serif;">
+                    <div>
+                        <img src="\static\imgs\about.svg" class="img-fluid mb-2" alt="" style="width: 30%; margin-top:-50px;">
+                    </div>
+                    <div style="color: #464362;" class="mt-2">
+                        <h1>Hi, </h1>
+                        <h3>I am Preet.</h3>
+                    </div>
+                    <div class="text-muted my-2 py-2">
+                        <p>
+                            A computer science student from India who speaks python, eats datasets and develops stuff.
+                        </p>
+                    </div>
+                    <div class="d-flex flex-row justify-content-center">
+                        <div class="p-4">
+                            <a href="https://github.com/preetmishra">
+                                <i class="fab fa-github fa-2x"></i>
+                            </a>
+                        </div>
+                        <div class="p-1"></div>
+                        <div class="p-4">
+                            <a href="https://www.linkedin.com/in/preetmishra/">
+                                <i class="fab fa-linkedin fa-2x"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-1">
+        </div>
+        <div class="col-md-7">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h2 style="color: #464362; font-family: 'Oswald', sans-serif;">about</h2>
+                    <div class="text-muted my-2 py-2" style="font-family: 'Open Sans', sans-serif;">
+                        <p>
+                            This website is a pilot project that I worked on while learning Django framework.
+                            <br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="card my-3">
+                <div class="card-body text-center">
+                    <h2 style="color: #464362; font-family: 'Oswald', sans-serif;">fork us on github</h2>
+                    <div class="my-2">
+                        <div class="d-flex flex-row justify-content-center">
+                            <div class="p-4">
+                                <a href="https://github.com/preetmishra/website-for-websites">
+                                    <i class="fab fa-github fa-2x"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card mt-3 mb-1">
+                <div class="card-body text-center">
+                    <h2 style="color: #464362; font-family: 'Oswald', sans-serif;">report an issue/feature request</h2>
+                    <div class="my-2">
+                        <div class="d-flex flex-row justify-content-center">
+                            <div class="p-4">
+                                <a href="https://github.com/preetmishra/website-for-websites/issues">
+                                    <i class="fab fa-git-alt fa-2x"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock body_block %}
+<!-- End of body -->

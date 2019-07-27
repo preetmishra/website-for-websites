@@ -5,15 +5,35 @@
 {% block title %} wfw | A website for websites {% endblock title %}
 <!-- End of title -->
 
+<!-- Top block -->
+{% block top_block %}
+
+<div class="alert alert-info text-center" role="alert"
+    style="font-family: 'Open Sans', sans-serif; border-radius: 0;">
+    Checkout <a href="{% url 'catalog:howitworks' %}" class="text-primary">How it works?</a> to know more.
+</div>
+
+{% endblock top_block%}
+<!-- End of top block -->
+
 <!-- Body -->
 {% block body_block %}
 
     <!-- Banner -->
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
-            <h1 class="display-4 text-break text-center">
-                A Website for <span class="display-3">Websites.</span>
-            </h1>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="my-lg-5 my-md-0">
+                        <h1 class="text-break" id="brandtext">
+                            A Website for <span id="brandtextspan">Websites</span>
+                        </h1>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <img src="\static\imgs\main.svg" class="img-fluid" alt="">
+                </div>
+            </div>
         </div>
     </div>
     <!-- End of banner -->
@@ -51,6 +71,16 @@
 
     <!-- Cards -->
     <div class="container">
+        <!-- Alert -->
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
+        <!-- End of Alert -->
         <div class="row">
             <!-- Card -->
             {% for tag in tag_list %}
@@ -65,20 +95,21 @@
                     <div class="card-body">
                         <ul class="list-group list-group-flush">
                             {% for item in tag.list|dictsort:"name" %}
-                            <li class="list-group-item"> 
+                            <li class="list-group-item py-2"> 
                                 <a href="{{ item.url }}"> {{ item.name }} </a>
-                                <span class="text-muted"> ({{ item.user }}) </span>
-                                {% if user.is_authenticated %}
+                                    {% if user.is_authenticated %}
                                     {% if not item in favourites %}
                                     <a href="{% url 'users:tweakfavourites' operation='add' pk=item.id %}">
-                                        +
+                                        <i class="fas fa-plus fa-xs float-right my-3"></i>
                                     </a> 
                                     {% else %}
                                     <a href="{% url 'users:tweakfavourites' operation='remove' pk=item.id %}">
-                                        -
+                                        <i class="fas fa-minus fa-xs float-right my-3"></i>
                                     </a>
                                     {% endif %} 
-                                {% endif %}
+                                    {% endif %}
+                                <br>
+                                <p class="text-muted w-75" style="font-size: 0.9rem;"> ({{ item.user }}) </p>
                             </li>
                             {% endfor %}
                         </ul>

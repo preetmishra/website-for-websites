@@ -1,3 +1,129 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald|Open+Sans&display=swap');
+
 .asteriskField {
     display: none;
 }
+
+/* navbar */
+.navbar{
+    background-color: #ffffff;
+    padding: 1.2rem;
+}
+
+.navbarlink{
+    color: #1c1d24;
+    text-transform: lowercase;
+}
+
+.navbarlink:hover{
+    color: #1369D5;
+}
+
+#navbartoggle{
+    color: #1c1d24;
+}
+/* endofnavbar */
+
+body{
+    background-color: #fefefe;
+    font-family: 'Oswald', sans-serif;
+}
+
+/* cards */
+.card-header{
+    background-color: #38364D;
+    color: #fefefe;
+}
+
+.card-body{
+    background-color: #fefefe;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.list-group-item{
+    background-color: #fefefe;
+    border: 2;
+    border-color: #E8EBEE;
+}
+
+.card{
+    border: 2;
+    border-color: #E8EBEE;
+}
+
+/* endofcards */
+
+/* anchors */
+a{
+    color: #38364D;
+}
+
+a:hover{
+    color: #1369D5;
+    text-decoration: none;
+}
+/* endofanchors */
+
+/* jumbotron */
+.jumbotron{
+    background-color: #fefefe;
+}
+/* endofjumbotron */
+
+/* brandtext */
+#brandtext{
+    color: #1369D5;
+    text-transform: capitalize;
+    font-size: 3rem;
+}
+
+#brandtextspan{
+    font-size: 6rem;
+}
+
+@media (max-width: 768px) {
+    #brandtext{
+        text-align: center;
+    }
+}
+/* endofbrandtext */
+
+/* buttons */
+.btn-outline-primary {
+    color: #38364D;
+    border-color: #38364D;
+    border-radius: .15rem;
+}
+
+.btn-outline-primary:hover {
+    color: white;
+    border-color: #38364D;
+    background-color: #38364D;
+}
+
+.btn-primary{
+    border-radius: .15rem;
+}
+
+.btn-secondary{
+    color: white;
+    border-color: #38364D;
+    background-color: #38364D;
+    border-radius: .15rem;
+}
+
+.btn-secondary:hover{
+    color: white;
+    border-color: rgb(45, 44, 54);
+    background-color: rgb(45, 44, 54);
+}
+#update_profile_btn{
+    background-color: #38364D;
+}
+/* endofbuttons */
+
+/* forms */
+.form-control{
+    border-radius: 0%;
+}
+/* endofforms */
