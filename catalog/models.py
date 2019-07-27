@@ -1,5 +1,4 @@
 from django.db import models
-from django.utils import timezone
 from django.contrib.auth.models import User
 from PIL import Image
 
@@ -20,7 +19,6 @@ class Website(models.Model):
     url = models.URLField(help_text='Do not forget to add http:// or https://.')
     tag = models.ForeignKey(Tag, on_delete=models.CASCADE, related_name='tags')
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    date_added = models.DateTimeField(default=timezone.now)
     approved = models.BooleanField(default='False')
 
     def __str__(self):
