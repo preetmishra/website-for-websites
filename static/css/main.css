@@ -127,3 +127,9 @@ a:hover{
     border-radius: 0%;
 }
 /* endofforms */
+
+/* alerts */
+.alert{
+    border-radius: .15rem;
+}
+/* endofalerts */
