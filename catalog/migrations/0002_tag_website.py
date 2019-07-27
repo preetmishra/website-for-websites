@@ -26,7 +26,7 @@ class Migration(migrations.Migration):
                 ('name', models.CharField(max_length=128)),
                 ('url', models.URLField()),
                 ('tag', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='catalog.Tag')),
-                ('user', models.ForeignKey(default='Anon', on_delete=django.db.models.deletion.SET_DEFAULT, to='catalog.UserProfile')),
+                ('user', models.ForeignKey(on_delete=django.db.models.deletion.SET_DEFAULT, to='catalog.UserProfile')),
             ],
         ),
     ]
