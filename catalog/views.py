@@ -17,7 +17,7 @@ class Index(TemplateView) :
         tag_form = forms.FilterByTagForm()
         if request.user.id :
             user_id = request.user.id
-            favourites = models.Profile.objects.get(user_id = user_id).favourites.all()
+            favourites = models.UserProfile.objects.get(user_id = user_id).favourites.all()
             return render(request, self.template_name, {'tag_form': tag_form, 
                                                         'websites': websites, 
                                                         'favourites': favourites})

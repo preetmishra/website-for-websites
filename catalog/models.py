@@ -24,7 +24,7 @@ class Website(models.Model):
     def __str__(self):
         return self.name
 
-class Profile(models.Model) :
+class UserProfile(models.Model) :
     GENDER = (
         ('M', 'Male'),
         ('F', 'Female'),
@@ -38,7 +38,7 @@ class Profile(models.Model) :
 
     @classmethod
     def add_or_remove_favourites(cls, user_id, website_id, operation) :
-        profile = Profile.objects.get(user = user_id)
+        profile = UserProfile.objects.get(user = user_id)
         if operation == 'add' :
             profile.favourites.add(website_id)
         elif operation == 'remove' :

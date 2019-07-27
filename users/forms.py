@@ -32,7 +32,7 @@ class UserForm(forms.ModelForm) :
 
 class UserProfileForm(forms.ModelForm) :
     class Meta :
-        model =  models.Profile
+        model =  models.UserProfile
         fields = ['gender', 'profile_picture']
 
 class UserUpdateForm(forms.ModelForm) :
@@ -49,5 +49,5 @@ class UserUpdateForm(forms.ModelForm) :
 
 class UserProfileUpdateForm(forms.ModelForm):
     class Meta :
-        model = models.Profile
+        model = models.UserProfile
         fields = ['gender', 'profile_picture']
