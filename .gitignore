@@ -1,4 +1,3 @@
 .vscode
 *.pyc
-media
 db.sqlite3
