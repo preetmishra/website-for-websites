@@ -74,7 +74,7 @@ def update_profile_view(request) :
         user_update_form = forms.UserUpdateForm(request.POST, instance = request.user)
         user_profile_update_form = forms.UserProfileUpdateForm(request.POST,
                                                                 request.FILES,
-                                                                instance = request.user.profile)
+                                                                instance = request.user.userprofile)
         if user_update_form.is_valid and user_profile_update_form.is_valid :
             user_update_form.save()
             user_profile_update_form.save()
@@ -82,7 +82,7 @@ def update_profile_view(request) :
             return redirect('users:profile')
     else :
         user_update_form = forms.UserUpdateForm(instance = request.user)
-        user_profile_update_form = forms.UserProfileUpdateForm(instance = request.user.profile)
+        user_profile_update_form = forms.UserProfileUpdateForm(instance = request.user.userprofile)
 
     return render(request, 'users/update_profile.html', {'user_update_form' : user_update_form,
                                                 'user_profile_update_form' : user_profile_update_form})

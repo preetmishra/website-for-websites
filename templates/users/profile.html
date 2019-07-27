@@ -1,3 +1,4 @@
+{% load staticfiles %}
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 
@@ -20,8 +21,13 @@
         <div class="col-lg-4">
             <div class="card mb-2">
                 <div class="card-body text-center">
+                    {% if user.profile.profile_picture.url %}
                     <img class="rounded-circle" style="width:85px; height:85px; margin-top: -42px;"
                         src="{{ user.profile.profile_picture.url }}" alt="avatar">
+                    {% else %}
+                    <img class="rounded-circle" style="width:85px; height:85px; margin-top: -42px;"
+                        src="{% static 'imgs/default.png' %}" alt="avatar">
+                    {% endif %}
                     <div style="color: #464362;" class="mt-2">
                         <h3> {{ user.username }} </h3>
                         <p class="text-muted"> {{ user.email }} </p>
