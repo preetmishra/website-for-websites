@@ -16,14 +16,11 @@ class Tag(models.Model):
 
 class Website(models.Model):
 
-    def default_user():
-        return User.objects.get(username='Anon').pk
-
     name = models.CharField(max_length=128, verbose_name='title', unique=True)
     url = models.URLField(help_text='Do not forget to add http:// or https://.')
     description = models.CharField(max_length=256, blank=True, default='')
     tag = models.ForeignKey(Tag, on_delete=models.CASCADE, related_name='tags')
-    user = models.ForeignKey(User, on_delete=models.SET_DEFAULT, default=default_user)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     date_added = models.DateTimeField(default=timezone.now)
     approved = models.BooleanField(default='False')
 
