@@ -54,7 +54,9 @@ class ProfileView(LoginRequiredMixin, TemplateView) :
     def get(self, request, *args, **kwargs) :
         user_id = request.user.id
         favourites = models.UserProfile.objects.get(user_id = user_id).favourites.all()
-        return render(request, self.template_name, {'favourites' : favourites })
+        contributed = models.Website.objects.filter(user_id = user_id).filter(approved = True)
+        return render(request, self.template_name, {'favourites' : favourites,
+                                                    'contributed' : contributed })
 
 @login_required
 def tweak_favourites(request, operation, pk) :

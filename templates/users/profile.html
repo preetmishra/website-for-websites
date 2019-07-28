@@ -42,6 +42,22 @@
                     <button class="btn btn-outline-primary float-right btn-block my-2">Reset Password</button>
                 </a>
             </div>
+            <div class="card my-2">
+                <div class="card-header">
+                    Contributions
+                </div>
+                <div class="card-body">
+                    {% if contributed %}
+                    {% for contribution in contributed %}
+                    <p> <a href="{{ contribution.url }}"> {{ contribution }} </a></p>
+                    {% endfor %}
+                    {% else %}
+                    <p>Such empty!</p>
+                    <p>To contribute by adding a new website, click <a
+                            href="{% url 'catalog:addwebsite' %}" class="text-primary">here</a>.</p>
+                    {% endif %}
+                </div>
+            </div>
         </div>
         <div class="col-lg-8">
             <div class="card">
@@ -50,11 +66,21 @@
                 </div>
                 <div class="card-body">
                     {% if favourites %}
-                        {% for favourite in favourites %}
-                        <p> <a href="{{ favourite.url }}"> {{ favourite }} </a></p>
-                        {% endfor %}
+                        <ul class="list-group list-group-flush">
+                            {% for favourite in favourites %}
+                            <li class="list-group-item py-2">
+                                <a href="{% url 'users:tweakfavourites' operation='remove' pk=favourite.id %}">
+                                    <i class="fas fa-minus fa-xs float-right pt-1"></i>
+                                </a>
+                                <p> 
+                                    <a href="{{ favourite.url }}"> {{ favourite }} </a>
+                                </p>
+                            </li>
+                            {% endfor %}
+                        </ul>
                     {% else %}
                         <p>Looks like you don't have any favourites yet.</p>
+                        <p>To add favourites, go to <a href="{% url 'catalog:index' %}" class="text-primary">home</a> and click on <strong>+</strong> button next to your favourite website.</p>
                     {% endif %}
                 </div>
             </div>
