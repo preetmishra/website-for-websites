@@ -163,5 +163,6 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'teamatwfw@gmail.com'
 EMAIL_HOST_PASSWORD = os.environ.get('WFW_EMAIL_PASSWORD')
+DEFAULT_FROM_EMAIL = 'noreply@wfwlive.herokuapp.com'
 
 django_heroku.settings(locals())
