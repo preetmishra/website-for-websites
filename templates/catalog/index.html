@@ -96,7 +96,7 @@
                         <ul class="list-group list-group-flush">
                             {% for item in tag.list|dictsort:"name" %}
                             <li class="list-group-item py-2"> 
-                                <a href="{{ item.url }}"> {{ item.name }} </a>
+                                <a href="{{ item.url }}" target="_blank"> {{ item.name }} </a>
                                     {% if user.is_authenticated %}
                                     {% if not item in favourites %}
                                     <a href="{% url 'users:tweakfavourites' operation='add' pk=item.id %}">
