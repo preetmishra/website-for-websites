@@ -59,14 +59,19 @@ class ProfileView(LoginRequiredMixin, TemplateView) :
                                                     'contributed' : contributed })
 
 @login_required
-def tweak_favourites(request, operation, pk) :
+def tweak_favourites(request, operation, where, pk) :
     models.UserProfile.add_or_remove_favourites(user_id = request.user.id, website_id = pk, operation = operation)
     website = models.Website.objects.get(id = pk)
+    
     if operation == 'add' :
         messages.info(request, f'Successfully added {website} to your favourites.')
     elif operation == 'remove' :
         messages.warning(request, f'Removed {website} from your favourites.')
-    return redirect('catalog:index')
+
+    if where == 'index' :
+        return redirect('catalog:index')
+    elif where == 'profile' :
+        return redirect('users:profile')
 
 
 @login_required

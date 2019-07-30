@@ -12,7 +12,7 @@ urlpatterns = [
     path('register/', user_views.register , name='register'),
     path('profile/', user_views.ProfileView.as_view(), name='profile'),
     path('profile/update/', user_views.update_profile_view, name='updateprofile'),
-    path('favourites/<str:operation>/<int:pk>', user_views.tweak_favourites, name='tweakfavourites')
+    path('favourites/<str:operation>/<str:where>/<int:pk>', user_views.tweak_favourites, name='tweakfavourites')
 ] 
 
 if settings.DEBUG :

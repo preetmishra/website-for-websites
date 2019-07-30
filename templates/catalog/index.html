@@ -99,11 +99,11 @@
                                 <a href="{{ item.url }}" target="_blank"> {{ item.name }} </a>
                                     {% if user.is_authenticated %}
                                     {% if not item in favourites %}
-                                    <a href="{% url 'users:tweakfavourites' operation='add' pk=item.id %}">
+                                    <a href="{% url 'users:tweakfavourites' operation='add' where='index' pk=item.id %}">
                                         <i class="fas fa-plus fa-xs float-right my-3"></i>
                                     </a> 
                                     {% else %}
-                                    <a href="{% url 'users:tweakfavourites' operation='remove' pk=item.id %}">
+                                    <a href="{% url 'users:tweakfavourites' operation='remove' where='index' pk=item.id %}">
                                         <i class="fas fa-minus fa-xs float-right my-3"></i>
                                     </a>
                                     {% endif %} 
