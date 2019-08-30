@@ -9,43 +9,50 @@
 {% block body_block %}
 
 <div class="container my-4">
-    <div class="row my-4">
-        <div class="col-md-6 py-1">
-            <div>
-                <h1 style="color: #464362;">wfw | a website for websites</h1>
-                <p class="my-4 text-muted" style="font-family: 'Open Sans', sans-serif;">
-                    wfw is an open source project to collect,
-                        categorize and showcase useful websites from all around the web.
-                    <br>
-                    Websites are tagged to help make your website hunt seamless. 
-                </p>
+    <div class="row my-4 py-sm-1 py-md-5">
+        <div class="col-md-6">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h2 style="color: #464362; font-family: 'Oswald', sans-serif;">wfw | a website for websites</h2>
+                    <p class="my-4 text-muted" style="font-family: 'Open Sans', sans-serif;">
+                        wfw is an open source project to collect,
+                            categorize and showcase useful websites from all around the web.
+                        <br>
+                        Websites are tagged to help make your website hunt seamless. 
+                    </p>
+                </div>
             </div>
-            <div>
-                <h3 style="color: #4B4B77;">adding a new website</h3>
-                <p class="my-4 text-muted" style="font-family: 'Open Sans', sans-serif;">
-                    You can request to add a new website by clicking the <a href="{% url 'catalog:addwebsite' %}" class="text-primary">add</a> button on the home page.
-                    <br>
-                    We'll add your website if everything seems perfect.
-                </p>
-            </div>
-            <div>
-                <h3 style="color: #4B4B77;">favourites | profile</h3>
-                <p class="my-4 text-muted" style="font-family: 'Open Sans', sans-serif;">
-                    You can add any listed website to your favourites and view them on your profile.
-                    <br>
-                    You can visit your <a href="{% url 'users:profile' %}" class="text-primary">profile</a> by
-                    clicking on your username in the navigation bar.
-                </p>
-            </div>
-            <div>
-                <h3 style="color: #4B4B77;">feedback | about</h3>
-                <p class="mt-4 mb-1 text-muted" style="font-family: 'Open Sans', sans-serif;">
-                    Head to <a href="{% url 'catalog:about' %}" class="text-primary">about</a> to leave us feedback, feature request and to know more.
-                </p>
+            <div class="card my-3">
+                <div class="card-body">
+                    <h2 style="color: #464362; font-family: 'Oswald', sans-serif;">adding a new website</h2>
+                    <p class="my-4 text-muted" style="font-family: 'Open Sans', sans-serif;">
+                        You can request to add a new website by clicking the <a href="{% url 'catalog:addwebsite' %}" class="text-primary">add</a> button on the home page.
+                        <br>
+                        We'll add your website if everything seems perfect.
+                    </p>
+                </div>
             </div>
         </div>
-        <div class="col-md-6 py-5">
-            <img src="\static\imgs\howitworks.svg" class="img-fluid ml-md-5" alt="">
+        <div class="col-md-6">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h2 style="color: #464362; font-family: 'Oswald', sans-serif;">favourites | profile</h2>
+                    <p class="my-4 text-muted" style="font-family: 'Open Sans', sans-serif;">
+                        You can add any listed website to your favourites and view them on your profile.
+                        <br>
+                        You can visit your <a href="{% url 'users:profile' %}" class="text-primary">profile</a> by
+                        clicking on your username in the navigation bar.
+                    </p>
+                </div>
+            </div>
+            <div class="card my-3">
+                <div class="card-body">
+                    <h2 style="color: #464362; font-family: 'Oswald', sans-serif;">feedback | about</h2>
+                    <p class="mt-4 mb-1 text-muted" style="font-family: 'Open Sans', sans-serif;">
+                        Head to <a href="{% url 'catalog:about' %}" class="text-primary">about</a> to leave us feedback, feature request and to know more.
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
 </div>
