@@ -14,8 +14,8 @@ class Tag(models.Model):
     def __str__(self):
         return self.tag
 
-class Website(models.Model):
 
+class Website(models.Model):
     name = models.CharField(max_length=128, verbose_name='title', unique=True)
     url = models.URLField(help_text='Do not forget to add http:// or https://.')
     tag = models.ForeignKey(Tag, on_delete=models.CASCADE, related_name='tags')
@@ -38,6 +38,7 @@ class Website(models.Model):
 
     def __str__(self):
         return self.name
+
 
 class UserProfile(models.Model) :
     GENDER = (

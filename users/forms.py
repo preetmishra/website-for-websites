@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.password_validation import validate_password, password_validators_help_text_html
 from catalog import models
 
+
 class UserForm(forms.ModelForm) :
     password = forms.CharField(widget=forms.PasswordInput(), 
                                 help_text = password_validators_help_text_html)
@@ -26,6 +27,7 @@ class UserForm(forms.ModelForm) :
 
         email = self.cleaned_data.get('email')
         username = self.cleaned_data.get('username')
+        
         if email and User.objects.filter(email=email).exclude(username=username).exists():
             raise forms.ValidationError(u'Email addresses must be unique.')
 
@@ -34,6 +36,7 @@ class UserProfileForm(forms.ModelForm) :
     class Meta :
         model =  models.UserProfile
         fields = ['gender']
+
 
 class UserUpdateForm(forms.ModelForm) :
     class Meta :
@@ -46,6 +49,7 @@ class UserUpdateForm(forms.ModelForm) :
             username = self.cleaned_data.get('username')
             if email and User.objects.filter(email=email).exclude(username=username).exists():
                 raise forms.ValidationError(u'Email addresses must be unique.')
+
 
 class UserProfileUpdateForm(forms.ModelForm):
     class Meta :

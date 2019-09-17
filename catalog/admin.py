@@ -10,5 +10,6 @@ class WebsiteAdmin(admin.ModelAdmin) :
     list_display.remove('id')
     list_editable = ['approved']
 
+
 admin.site.register(models.UserProfile)
 admin.site.register(models.Tag)

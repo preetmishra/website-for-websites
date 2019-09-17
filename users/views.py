@@ -9,7 +9,6 @@ from catalog import models
 # Create your views here.
 
 def register(request) :
-
     if request.user.is_authenticated : 
         return redirect('catalog:index')
 
@@ -18,7 +17,6 @@ def register(request) :
         user_profile_form = forms.UserProfileForm(data = request.POST)
 
         if user_form.is_valid() and user_profile_form.is_valid() :
-
             username = user_form.cleaned_data.get('username')
             messages.success(request, f'Congratulations! You are successfully registered as {username}.')
             user = user_form.save()
@@ -48,6 +46,7 @@ def register(request) :
     return render(request, 'users/register.html', {'user_form' : user_form, 
                                                     'user_profile_form' : user_profile_form })
 
+
 class ProfileView(LoginRequiredMixin, TemplateView) :
     template_name = 'users/profile.html'
 
@@ -57,6 +56,7 @@ class ProfileView(LoginRequiredMixin, TemplateView) :
         contributed = models.Website.objects.filter(user_id = user_id).filter(approved = True)
         return render(request, self.template_name, {'favourites' : favourites,
                                                     'contributed' : contributed })
+
 
 @login_required
 def tweak_favourites(request, operation, where, pk) :
@@ -76,7 +76,6 @@ def tweak_favourites(request, operation, where, pk) :
 
 @login_required
 def update_profile_view(request) :
-    
     if request.method == 'POST' :
         user_update_form = forms.UserUpdateForm(request.POST, instance = request.user)
         user_profile_update_form = forms.UserProfileUpdateForm(request.POST,

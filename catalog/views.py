@@ -9,6 +9,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from catalog import models 
 from catalog import forms
 
+
 class Index(TemplateView) :
     template_name = 'catalog/index.html'
 
@@ -43,6 +44,7 @@ class WebsiteCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
 
     success_url = reverse_lazy('catalog:index')
     success_message = "Thank you for contributing! We have recieved your request. We will add your suggested website as soon as we are done with its verification."
+    
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super(WebsiteCreateView, self).form_valid(form)

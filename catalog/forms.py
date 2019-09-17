@@ -1,6 +1,7 @@
 from django import forms
 from catalog import models
 
+
 class FilterByTagForm(forms.Form) :    
     tag = forms.ModelChoiceField(
         queryset=models.Tag.objects.filter(tags__isnull = False).distinct(),
