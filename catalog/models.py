@@ -70,6 +70,5 @@ class UserProfile(models.Model) :
             img.thumbnail(output_size)
             img.save(self.profile_picture.path)
 
-    
     def __str__(self) :
         return self.user.username
