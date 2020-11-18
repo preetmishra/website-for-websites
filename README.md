@@ -20,4 +20,4 @@ You can request to add a new website by clicking [here](https://wfwlive.herokuap
 * [Heroku](https://www.heroku.com) - Cloud Application Platform
 
 ## Author
-- **Preet Mishra** [LinkedIn](https://www.linkedin.com/in/preetmishra)
+**Preet Mishra** [LinkedIn](https://www.linkedin.com/in/preetmishra)
